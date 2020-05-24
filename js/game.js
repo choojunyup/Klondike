@@ -110,7 +110,7 @@
             backImg.src = backBitmapUrl;
             for (var i = 0; i < 4; i++)
             {
-                var cardTypeDir = "./image/poker/" + cardColors[i] + "/";
+                var cardTypeDir = "./image/" + cardColors[i] + "/";
                 for (var j = 0; j < 13; j++)
                 {
                     var cardIndexName = cardIndexs[j];
