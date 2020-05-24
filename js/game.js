@@ -43,7 +43,7 @@
         var score =0; 
 
         var audio = document.createElement("audio");
-        audio.src = "sound/dealVoice.mp3";
+        audio.src = "./sound/dealVoice.mp3";
 
         var Pile = function (index, position, offsetX, offsetY)
         {
@@ -86,7 +86,7 @@
 
         function LoadCardImage()
         {
-            var backBitmapUrl = "image/poker/back.png";
+            var backBitmapUrl = "./image/poker/back.png";
             backImg = document.createElement("img");
             $(backImg).load(function ()
             {
@@ -98,11 +98,11 @@
                 //ShowMessage("Sorry, failed to load image resource.", false);
             });
 
-            var cardmaskUrl = "image/poker/cardmask.png";
+            var cardmaskUrl = "./image/poker/cardmask.png";
             cardmaskImg = document.createElement("img");
             cardmaskImg.src = cardmaskUrl;
 
-            var cardsmaskUrl = "image/poker/cards.png";
+            var cardsmaskUrl = "./image/poker/cards.png";
             cardsmaskImg = document.createElement("img");
             cardsmaskImg.src = cardsmaskUrl;
 
@@ -110,7 +110,7 @@
             backImg.src = backBitmapUrl;
             for (var i = 0; i < 4; i++)
             {
-                var cardTypeDir = "image/poker/" + cardColors[i] + "/";
+                var cardTypeDir = "./image/poker/" + cardColors[i] + "/";
                 for (var j = 0; j < 13; j++)
                 {
                     var cardIndexName = cardIndexs[j];
@@ -1210,7 +1210,7 @@
                 {
                     IniGame();
                     clearInterval(si);
-                    
+
                 }
                 var t2 = new Date().getTime();
                 if (t2 - t1 > loadImgTimeout && loadedImgCount < 53)
