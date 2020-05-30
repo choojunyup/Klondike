@@ -871,9 +871,18 @@
         function IsGameFinished()
         {
             var showFaceCardCount = GetShowFaceCardCount();
+            var count = 0;
             if (showFaceCardCount >= cardList.length)
             {
-                return true;
+                for (var i = 0; i < cardList.length; i++){
+                    if (cardList[i].Pile.Index >= 2 && cardList[i].Pile.Index <= 5){
+                            count++;
+                    }
+                }
+
+                if(count >= 52){
+                    return true;
+                }
             }
             return false;
         }
@@ -885,6 +894,7 @@
                 return;
             }
             var putCardsCount = 0;
+
             for (var i = 0; i < cardList.length; i++)
             {
                 if (cardList[i].Pile.Index >= 2 && cardList[i].Pile.Index <= 5)
@@ -892,6 +902,7 @@
                     putCardsCount++;
                 }
             }
+            console.log("------------------");
 
             score = putCardsCount * 100;
             $("#score").html(score);
@@ -1133,19 +1144,22 @@
         }
 
         function timetoggle(){
-            if($("#curtain").css("display") == "none"){
-                pause();
-            }else{
-                resume();
-            }
+                if($("#curtain").css("display") == "none"){
+                     pause();
+
+                }else{
+                    resume();
+                }
         }
 
         function pause(){
-            isPlayingAnimation = true;  //click block
-            clearInterval(gameInterval);  //timer pause
-            $("#stopButton").hide();
-            $("#newButton").hide();
-            $("#curtain").show();
+            if(!isPlayingAnimation){
+                isPlayingAnimation = true;  //click block
+                clearInterval(gameInterval);  //timer pause
+                $("#stopButton").hide();
+                $("#newButton").hide();
+                $("#curtain").show();
+            }
             //s.style.display="";
         }
 
@@ -1210,7 +1224,6 @@
                 {
                     IniGame();
                     clearInterval(si);
-
                 }
                 var t2 = new Date().getTime();
                 if (t2 - t1 > loadImgTimeout && loadedImgCount < 53)
@@ -1220,15 +1233,18 @@
                 }
             }, 50);
 
+
         }
 
         function reset(){
 
-            clearInterval(gameInterval);
-            $("#timer").html('0' +0 + ":" + '0' +0 + ":" + '0' +0);
-            $("#score").html(0);
+            if(!isPlayingAnimation){
+                clearInterval(gameInterval);
+                $("#timer").html('0' +0 + ":" + '0' +0 + ":" + '0' +0);
+                $("#score").html(0);
 
-            start();
+                start();
+            }
         }
 
         function startBtn(){
