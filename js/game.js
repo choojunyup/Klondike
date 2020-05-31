@@ -40,6 +40,8 @@
         var gameInterval;
         var isGameFinished = false;
 
+        var startAnimation = true;
+
         var score =0; 
 
         var audio = document.createElement("audio");
@@ -405,6 +407,8 @@
                 DrawBack();
                 CountTime();
                 isPlayingAnimation = false;
+
+                startAnimation = false;
                 return;
             }
             isPlayingAnimation = true;
@@ -1153,7 +1157,7 @@
         }
 
         function pause(){
-            if(!isPlayingAnimation){
+            if(!startAnimation){
                 isPlayingAnimation = true;  //click block
                 clearInterval(gameInterval);  //timer pause
                 $("#stopButton").hide();
@@ -1211,6 +1215,8 @@
             //gameInterval = null;
             isGameFinished = false;
 
+            startAnimation = true;
+
             score=0;
 
             //clickAble = true; // click start
@@ -1238,7 +1244,7 @@
 
         function reset(){
 
-            if(!isPlayingAnimation){
+            if(!startAnimation){
                 clearInterval(gameInterval);
                 $("#timer").html('0' +0 + ":" + '0' +0 + ":" + '0' +0);
                 $("#score").html(0);
